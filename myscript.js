@@ -10,22 +10,21 @@ async function zadanie9() {
 
 console.log(zadanie9());
 
+const string = "Rejected";
 
-async function multiplyAsync() {
-    let promise = new Promise((resolve, reject) => {
-        var x = 2;
-        var y = 2;
-        var z = x * y;
-
-        if (isNaN(x || y)) {
-            console.log("NaN");
-        } else {
-            setTimeout(() => resolve(z), 0000)
+var multiplyAsync = (x, y) => {
+    return new Promise((resolve, reject) => {
+        if (typeof x !== 'number' || typeof y !== 'number') {
+            reject(wynik);
         }
-    });
-    let result = await promise;
-
-    console.log(result);
+        else {
+            resolve(x * y);
+        }
+    })
 }
-
-console.log(multiplyAsync());
+multiplyAsync(5, 5).then(console.log).catch((error) => {
+    console.log(string);
+})
+multiplyAsync(5, "string").then(console.log).catch((error) => {
+    console.log(string);
+})
